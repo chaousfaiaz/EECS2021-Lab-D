@@ -31,8 +31,17 @@ public class BrailleTranslator {
      * character to a list of strings (e.g. a -> {"10", "00", "00"})
      */
     private void initializeMap() {
-         throw new UnsupportedOperationException(); //replace this line!
-    }
+         try{ Scanner  scanner = new Scanner (new File("disctionary.txt"))){
+while(Scanner.hasNextLine()){
+String[] tokens = scanner.nextLine().split(",");
+char key = tokens[0].charAt(1);
+List<String> braille = Arrays.asList(tokens[1], tokens[2], tokens[3]);
+map.put(key, braille);
+}
+             }catch(FileNotFoundException e){
+throw new RuntimeException(Dictionry file not found");
+}}//replace this line!
+    
 
     /**
      * Translate an entire ASCII line of characters to Braille letters
@@ -45,8 +54,10 @@ public class BrailleTranslator {
      * @param input the ASCII string to be translated.
      */
     public void translateLine(String input) throws BrailleLetterException {
-        throw new UnsupportedOperationException(); //replace this line!
-    }
+        for (char c: input.toCharArray(){
+translation.add(translateChar(c));
+}} //replace this line!
+    
 
     /**
      * Translate an ASCII character to a single Braille letter.
@@ -62,8 +73,10 @@ public class BrailleTranslator {
      * @return the Braille character translation (list of strings)
      */
     public List<String> translateChar(char c) {
-        throw new UnsupportedOperationException(); //replace this line!
-    }
+       return map.get(c);
+}
+//replace this line!
+    
 
     /**
      * Display a complete Braille Translation
